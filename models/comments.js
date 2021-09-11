@@ -3,23 +3,16 @@ const {Model, DataTypes} = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Blog extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
+class Comments extends Model {
 }
 
-Blog.init(
+Comments.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     content: {
       type: DataTypes.STRING,
@@ -32,17 +25,19 @@ Blog.init(
             isDate: true    
         }
     },
-    date_updated:{
-        type: DataTypes.DATE,
-        validate: {
-            isDate: true    
-        }
+    post_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'posts',
+        key: 'id'
+      }
     },
     user_id: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-          model: 'user',
+          model: 'users',
           key: 'id'
       }
     },
@@ -52,8 +47,8 @@ Blog.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'blog',
+    modelName: 'Comments',
   }
 );
 
-module.exports = Blog;
+module.exports = Comments;

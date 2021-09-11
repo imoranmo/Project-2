@@ -1,13 +1,10 @@
-const User = require('./User');
-const Blog = require('./Blog');
-const User = require('./User');
+const Users = require('./Users');
+const Instruments = require('./Instruments');
+const Comments = require('./Comments');
+const Posts = require('./Posts');
+const Rhythms = require('./Rhythms');
+const userInstruments = require('./userInstruments');
+const userRhythms = require('./userRhythms');
 
-User.hasMany(Blog, {
-  foreignKey: 'user_id',
-});
 
-Blog.belongsTo(User, {
-  foreignKey: 'user_id',
-});
-
-module.exports = { User, Blog };
+module.exports = { Users, };
