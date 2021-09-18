@@ -1,9 +1,15 @@
 //Main feed page
 const router = require('express').Router();
 const { Rhythms, Posts, Users } = require('../models');
+const withAuth = require('../utils/auth');
 
-router.get('/',async (req, res) => {
+router.get('/',withAuth,async (req, res) => {
     try {
+
+      if (!req.session.logged_in) {
+        res.redirect(req.baseUrl + '/session/login');
+        return;
+    }
       const rhythmData = await Rhythms.findAll();
       const rhythms = rhythmData.map((rhythm) => rhythm.get({ plain: true }));
       const postData = await Posts.findAll();
