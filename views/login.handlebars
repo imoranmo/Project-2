@@ -1,17 +1,42 @@
-<h2>Login</h2>
+<section class="flex flex-col md:flex-row h-screen items-center">
+<!--Intro Title/Description, Left Side-->
+  <div class="bg-white-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen p-24">
+    <div class ="web-title text-4xl font-bold">A-LOTTA-RHYTHMS</div>
+    <br>
+    <div class = "desc text-xl colors-yellow-400">Website Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quae maiores recusandae assumenda, porro praesentium sunt qui labore nostrum sit velit corrupti, amet ab rem accusantium corporis dignissimos nesciunt. Rerum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi excepturi voluptatum at repellendus laudantium dignissimos adipisci nobis, veritatis esse eum aut. Nihil alias labore fugit aperiam, praesentium fuga dolorum dolore?</div>
+  </div>
+<!--START Login Box, Right Side START-->
+  <div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+        flex items-center justify-center">
+  <div class="w-full h-100 border-2 shadow-lg rounded">
+      <h1 class="greeting text-xl md:text-2xl font-bold leading-tight mt-12 text-center px-8"> WELCOME BACK! </h1>
+      <form class="mt-6 px-10" action="#" method="POST">
+      <!--Email Input-->
+        <div>
+          <label class="block text-gray-700">Email Address</label>
+          <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none " autofocus autocomplete required> 
+        </div>
+      <!--Password Input-->
+        <div class="mt-4">
+          <label class="block text-gray-700">Password</label>
+          <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                focus:bg-white focus:outline-none" required>
+        </div>
+      <!--Forgot Password Link-->
+        <div class="text-right mt-2">
+          <a href="#" class="text-xs font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
+        </div>
+      <!--Login Button-->
+        <button type="submit" class="w-full block bg-black hover:bg-yellow-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
+              px-4 py-3 mt-6">Log In</button>
+    </form>
+      <!--Sign Up Link-->
+      <p class="mt-8 text-center mb-12">Don't have an account yet? <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold underline ">Register here.</a></p>
 
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
 
+    </div>
+<!--END Login Box, Right Side END-->
+  </div>
+
+</section>
 <script src="/js/login.js"></script>
