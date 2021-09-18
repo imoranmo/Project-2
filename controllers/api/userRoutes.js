@@ -51,17 +51,18 @@ router.post('/logout', (req, res) => {
 router.post('/signup', async (req, res) => {
 
   try {
-    await Users.create(req.body);
-
-    // if (newUser.length != 0) {
-    //   req.session.save(() => {
-    //     req.session.user_id = newUser.id;
-    //     req.session.logged_in = true;
-    //     res.status(200).redirect(req.baseUrl + '/');
-    //   })
+   const newUser =  await Users.create(req.body);
+    console.log(newUser.dataValues.id);
+    if (newUser.length != 0) {
+      req.session.save(() => {
+        req.session.user_id = newUser.dataValues.id;
+        req.session.logged_in = true;
+        res.status(200).json(newUser);
+      })
       
-    // }
-    res.status(200).end();
+    }
+    // console.log(req.session)
+    ;
     } catch (err) {
       res.status(404).json(err);
     }
