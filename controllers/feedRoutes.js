@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { Rhythms, Posts, Users } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/',withAuth,async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
 
       if (!req.session.logged_in) {
