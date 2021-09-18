@@ -48,4 +48,24 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.post('/signup', async (req, res) => {
+
+  try {
+    await Users.create(req.body);
+
+    // if (newUser.length != 0) {
+    //   req.session.save(() => {
+    //     req.session.user_id = newUser.id;
+    //     req.session.logged_in = true;
+    //     res.status(200).redirect(req.baseUrl + '/');
+    //   })
+      
+    // }
+    res.status(200).end();
+    } catch (err) {
+      res.status(404).json(err);
+    }
+
+});
+
 module.exports = router;
