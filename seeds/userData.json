@@ -1,7 +1,23 @@
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
-    "password": "password12345"
+    "first_name": "Luke",
+    "last_name":"Cole",
+    "user_name": "lukeajcole",
+    "email": "Luke@Luke.com",
+    "password": "lukeluke"
+  },
+  {
+    "first_name": "Ismael",
+    "last_name": "Moran",
+    "user_name": "ismoranmo",
+    "email": "is@is.com",
+    "password": "ismamisma"
+  },
+  {
+    "first_name": "Tina",
+    "last_name":  "ly",
+    "user_name": "enfys",
+    "email": "Tina@Tina.com",
+    "password": "tinatina"
   }
 ]

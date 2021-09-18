@@ -1,8 +1,9 @@
 [
   {
-    "title": "First Post",
-    "content": "Woooo it working",
-    "date_created": "September 10, 2021 08:30:00",
-    "user_id": 1
+    "title": "Who wants to join my band, CatSkins",
+    "content": "We are a cross between progressive jazz and hair metal. Looking for someone to play stand up bass.",
+    "date_created": "September 18, 2021 08:30:00",
+    "user_id": 1,
+    "rhythm_id":1
   }
 ]

@@ -14,7 +14,7 @@ userInstruments.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    rhythm_id: {
+    instrument_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
