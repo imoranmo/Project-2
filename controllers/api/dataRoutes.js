@@ -1,2 +1,0 @@
-// Instruments lookup
-// Rhythms lookup

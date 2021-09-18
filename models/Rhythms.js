@@ -25,7 +25,7 @@ Rhythms.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Rhythms',
+    modelName: 'rhythms',
   }
 );
 

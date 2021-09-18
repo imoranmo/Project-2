@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS alottarythms_db;
-CREATE DATABASE alottarythms_db;
+DROP DATABASE IF EXISTS alottarhythms_db;
+CREATE DATABASE alottarhythms_db;
