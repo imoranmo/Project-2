@@ -1,3 +1,15 @@
 {{!-- Shows blog posts made by the user
         Option to add new post
         When clicking existing post, they can delete or update that post and then save it and go back to the dashboard --}}
+
+        <div class="mt-6">
+                    {{#each posts as |post| }}   
+                    <div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+                        <div class="flex items-center justify-between"><span class="font-light text-gray-600">{{format_date post.date_created}}</span>
+                        </div>
+                        <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
+                            <p class="mt-2 text-gray-600">{{post.content}}</p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
