@@ -1,3 +1,5 @@
+const commentToggleBtn = document.querySelector('#toggle-comments')
+
 const commentToggleHandler = async (event) => {
   // Stop the browser from submitting the form so we can do so with JavaScript
   event.preventDefault();
@@ -6,6 +8,7 @@ const commentToggleHandler = async (event) => {
     
       // Gather the data from the form elements on the page
       const post_id = event.target.value;
+      const commentBlock = commentToggleBtn.nextElementSibling;
       const url = '/api/posts/comments/' + post_id
       // Send the e-mail and password to the server
       const response = await fetch(url, {
@@ -15,7 +18,7 @@ const commentToggleHandler = async (event) => {
 
      const commentArr = await response.json()
       console.log(commentArr);
-      const commentBlock = document.getElementById("comments");
+      
       commentBlock.innerHTML = '<h3>Comments:</h3>';
 
       if (commentBlock.classList.contains('hidden')) {
@@ -40,6 +43,5 @@ const commentToggleHandler = async (event) => {
   }
     };
 
-document
-  .querySelector('#toggle-comments')
-  .addEventListener('click', commentToggleHandler);
+
+    commentToggleBtn.addEventListener('click', commentToggleHandler);
