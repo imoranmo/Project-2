@@ -3,6 +3,7 @@ const commentToggleHandler = async (event) => {
   event.preventDefault();
 
   try {
+    
       // Gather the data from the form elements on the page
       const post_id = event.target.value;
       const url = '/api/posts/comments/' + post_id
@@ -13,7 +14,12 @@ const commentToggleHandler = async (event) => {
       })
 
      const commentArr = await response.json()
-     console.log(commentArr[0]);
+
+     const commentBlock = document.getElementById("comments");
+     console.log("Clicked");
+     console.log(commentBlock.id)
+     commentBlock.classList.toggle("hidden");
+
   } catch {
 
   }

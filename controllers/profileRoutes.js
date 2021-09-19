@@ -1,6 +1,6 @@
-//Main feed page
+//Profile page routes
 const router = require('express').Router();
-const { Rhythms, Posts, Users, Comments } = require('../models');
+const { Rhythms, Posts, Users } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -12,13 +12,15 @@ router.get('/', withAuth, async (req, res) => {
     }
       const rhythmData = await Rhythms.findAll();
       const rhythms = rhythmData.map((rhythm) => rhythm.get({ plain: true }));
-
-      const postData = await Posts.findAll({include: [{model: Comments},{model: Users} ]});
+      const postData = await Posts.findAll();
       const posts = postData.map((post) => post.get({ plain: true }));
-      
 
-      res.render('feed', {rhythms, posts,
-        logged_in: req.session.logged_in }
+      res.render('profile', {rhythms, posts,
+        logged_in: req.session.logged_in },        
+        
+        // {include: {
+        //   model: Users,
+        // }}
       );
     } catch (err) {
       res.status(500).json(err);
