@@ -41,13 +41,14 @@
                         <div class="flex items-center justify-between mt-4">
                             <button id="toggle-comments" value="{{post.id}}" class="text-blue-500 hover:underline">Show Comments</button>
                             <div class="hidden" id="comments">
-                                {{#each post.comments as |comment| }}
+                                <h1>Comments:</h1>
+                                {{!-- {{#each post.comments as |comment| }}
                                 <div>
                                     <h1 class="font-bold text-gray-700 hover:underline">Comment!</h1>
                                     <p>{{comment.content}}</p>
                                 
                                 </div>
-                                {{/each}}
+                                {{/each}} --}}
                             </div>
                         </div>
                     </div>

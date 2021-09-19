@@ -13,8 +13,9 @@ router.get('/', withAuth, async (req, res) => {
       const rhythmData = await Rhythms.findAll();
       const rhythms = rhythmData.map((rhythm) => rhythm.get({ plain: true }));
 
-      const postData = await Posts.findAll({include: [{model: Comments},{model: Users} ]});
+      const postData = await Posts.findAll({include: [{model: Users} ]});
       const posts = postData.map((post) => post.get({ plain: true }));
+      
       
 
       res.render('feed', {rhythms, posts,
