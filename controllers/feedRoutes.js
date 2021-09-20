@@ -29,7 +29,13 @@ router.get('/', withAuth, async (req, res) => {
   router.get('/newPost/', withAuth, async (req, res) => {
     try {
 
-      res.render('newPost', {logged_in: req.session.logged_in})
+      if (!req.session.logged_in) {
+        res.redirect(req.baseUrl + '/session/login');
+        return;
+      }
+      const rhythmData = await Rhythms.findAll();
+      const rhythms = rhythmData.map((rhythm) => rhythm.get({ plain: true }));
+      res.render('newPost', {rhythms, logged_in: req.session.logged_in})
 
     } catch (err) {
       res.status(500).json(err);

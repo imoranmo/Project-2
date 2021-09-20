@@ -10,8 +10,11 @@ router.get('/', withAuth, async (req, res) => {
         res.redirect(req.baseUrl + '/session/login');
         return;
     }
-      const postData = await Posts.findAll({where: {user_id:req.session.user_id}});
+      const postData = await Posts.findAll({where: {user_id:req.session.user_id},
+                                           include: [{model: Users} ]
+                                          });
       const posts = postData.map((post) => post.get({ plain: true }));
+      console.log(posts);
 
       res.render('profile', {posts,
         logged_in: req.session.logged_in }

@@ -7,21 +7,27 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 <h1 class="np-title mb-8 text-3xl font-bold">NEW POST</h1>
 <!--START New Post Fields START-->
-                <form method="POST" action="action.php">
+                <form id='newPost-form'>
                     <!--Title-->
                     <div class="mb-4">
                             <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
                             <input type="text" class="rounded-lg border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
                         </div>
-                    <!--Description-->
-                        <div class="mb-4">
-                            <label class="text-xl text-gray-600">Description</label></br>
-                            <input type="text" class="rounded-lg border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
+                        </br>
+                        <div>
+                            <label class="text-xl text-gray-600">Rhythm</label></br>
+                            <select id='rhythm' class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                {{#each rhythms as |rhythm| }} 
+                                    <option value="{{rhythm.id}}">{{rhythm.name}}</option>
+                                {{/each}}
+                            </select>
                         </div>
+                        </br></br>
+
                     <!--Content-->
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
-                            <textarea name="content" class="rounded-lg border-2 border-gray-500">
+                            <textarea id='content' name="content" class="rounded-lg border-2 border-gray-500">
                                 
                             </textarea>
                         </div>
@@ -41,8 +47,11 @@
         </div>
     </div>
 <!--Text Editor Add-On-->
+    <script src="/js/newPost.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script>
         CKEDITOR.replace( 'content' );
     </script>
+
+    
