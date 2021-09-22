@@ -57,13 +57,14 @@
                     <h1 class="mb-4 text-xl font-bold text-gray-700">Categories</h1>
                     <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                         <ul>
-                            {{#each rhythms as |rhythm| }}                        
+                            {{#each rhythmSet as |rhythm| }}                        
                             <li>
-                                <a href="#" class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">
-                                    - {{rhythm.name}}
-                                </a>
+                                <label class="inline-flex items-center mt-3">
+                                    <input id='rhythmFilter' data-value='{{id}}' type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" checked><span class="ml-2 text-gray-700">{{rhythm.name}}</span>
+                                </label>
                             </li>
                             {{/each}}
+                            <button id='updResults'>Update Results</button>
                         </ul>
                     </div>
                 </div>
@@ -96,3 +97,4 @@
     </footer>
 </div>
 <script src="/js/comment.js"></script>
+<script src="/js/filter.js"></script>
