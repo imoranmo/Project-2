@@ -1,3 +1,6 @@
+body{
+  font-family: 'Didact Gothic', sans-serif;
+}
 .web-title {
     font-family: 'Exo', sans-serif;
     -webkit-text-stroke: 1px black;

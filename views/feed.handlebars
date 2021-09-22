@@ -3,9 +3,9 @@
         <div class="container flex justify-between mx-auto">
             <div class="w-full lg:w-8/12">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
+                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl ml-12 underline">POSTS</h1>
                     <div>
-                        <a href="/newPost/">New Post</a>
+                        <a href="/newPost/" class="mr-12 rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 font-semibold p-2">CREATE NEW POST</a>
                     </div>
                 </div>
                 <div class="mt-6">
@@ -14,7 +14,7 @@
                         <div class="flex items-center justify-between"><span class="font-light text-gray-600">{{format_date post.date_created}} by: {{post.user.user_name}}</span>
                         </div>
                         <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
-                            <div>{{post.rhythm.name}}</div>
+                            <div class="text-blue-700">#{{post.rhythm.name}}</div>
                             <div>{{{post.content}}}</div>
                         </div>
                         <div class="flex items-center justify-between mt-4">
@@ -23,6 +23,10 @@
                             <div class="hidden" id="comments">
                                 <h1>Comments:</h1>
                             </div>
+                      
+                        </div>
+                              <div class="mb-4 rounded-full">
+<input type="text" name="" id="comment" placeholder="Add a comment!" class="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autofocus autocomplete required>
                         </div>
                     </div>
                     {{/each}}
@@ -33,7 +37,7 @@
             
             <div class="hidden w-4/12 -mx-8 lg:block">
                 <div class="px-8">
-                    <h1 class="mb-4 text-xl font-bold text-gray-700 ml-6">Categories</h1>
+                    <h1 class="mb-4 text-2xl font-bold text-gray-700 ml-6 underline">CATAGORIES</h1>
                     <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                         <ul>
                             {{#each rhythmSet as |rhythm| }}                        
@@ -43,7 +47,7 @@
                                 </label>
                             </li>
                             {{/each}}
-                            <button type="submit" class="rounded-lg w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-yellow-500 hover:shadow-none" id='updResults'>Filter</button>
+                            <button type="submit" class="rounded-lg w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-blue-600 hover:shadow-none" id='updResults'>Filter</button>
                         </ul>
                     </div>
                 </div>
@@ -52,26 +56,26 @@
     </div>
     
 </div>
-<div class="mt-8">
+<div class="mt-8 ml-16">
                     <div class="flex">
                         <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md cursor-not-allowed">
-                            Previous
+                            PREVIOUS
                         </a>
                     
-                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-yellow-500 hover:text-white">
+                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
                             1
                         </a>
                     
-                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-yellow-500 hover:text-white">
+                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
                             2
                         </a>
                     
-                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-yellow-500 hover:text-white">
+                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
                             3
                         </a>
                     
-                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-yellow-500 hover:text-white">
-                            Next
+                        <a href="#" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
+                            NEXT
                         </a>
                     </div>
                 </div>
