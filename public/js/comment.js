@@ -38,6 +38,12 @@ const commentToggleHandler = async (event) => {
       }
 
       commentBlock.classList.toggle("hidden");
+      if (commentBlock.classList.contains("hidden")) {
+        commentToggleBtn.innerHTML = "Show Comments"
+      } else {
+        commentToggleBtn.innerHTML = "Hide Comments"
+      }
+      
   } catch {
 
   }
