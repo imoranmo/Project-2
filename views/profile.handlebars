@@ -29,9 +29,9 @@
                             src="C:\Users\Tina Ly\Documents\Project-2\default profile picture.jpg"
                             alt="">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">John Doe</h1>
-                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Username: <span>johndoe</span></h3>
-                    <p class="text-sm text-blue-500 hover:text-blue-600 leading-6">Add a bio.</p>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{user.first_name}} {{user.last_name}}</h1>
+                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Username: <span>{{user.user_name}}</span></h3>
+                    <p class="text-sm text-grey-500 leading-6">BIO: {{user.bio}}.</p>
                     
                 </div>
                 <!-- End of profile card -->
@@ -42,12 +42,9 @@
                         <span>Instruments</span>
                     </div>
                     <div class="grid grid-cols-3 gap-1">
-                        <div class="rounded-lg bg-yellow-500 text-center">Guitar</div>
-                        <div class="rounded-lg bg-yellow-500 text-center">Piano</div>
-                        <div class="rounded-lg bg-yellow-500 text-center">Bass</div>
-                        <div class="rounded-lg bg-yellow-500 text-center">Saxophone</div>
-                        <div class="rounded-lg bg-yellow-500 text-center">Drums</div>
-                        <div class="rounded-lg bg-yellow-500 text-center">Tamborine</div>
+                        {{#each user.instruments as |instrument| }}  
+                        <div class="rounded-lg bg-yellow-500 text-center">{{instrument.name}}</div>
+                        {{/each}}
                     </div>
                 </div>
                 <!-- End of friends card -->
@@ -69,7 +66,25 @@
                 <!-- End of about section -->
 
                 <div class="my-4"></div>
-
+                     <div class="mt-6">
+                    {{#each posts as |post| }}   
+                    <div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+                        <div class="flex items-center justify-between"><span class="font-light text-gray-600">{{format_date post.date_created}} by: {{post.user.user_name}}</span>
+                        </div>
+                        <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
+                            <div>{{post.rhythm.name}}</div>
+                            <div>{{{post.content}}}</div>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            {{!-- Comments.js uses "nextSiblingElement to get to comments from the toggle-comment btn" --}}
+                            <button id="toggle-comments" value="{{post.id}}" class="text-blue-500 hover:underline">Show Comments</button>
+                            <div class="hidden" id="comments">
+                                <h1>Comments:</h1>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
                 
                 </div>
                 <!-- End of profile tab -->
