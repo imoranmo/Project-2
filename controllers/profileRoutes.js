@@ -11,7 +11,7 @@ router.get('/', withAuth, async (req, res) => {
         return;
     }
       const postData = await Posts.findAll({where: {user_id:req.session.user_id},
-                                           include: [{model: Users} ]
+                                           include: [{model: Users}, {model:Rhythms} ]
                                           });
       const posts = postData.map((post) => post.get({ plain: true }));
       console.log(posts);

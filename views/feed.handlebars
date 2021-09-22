@@ -1,28 +1,9 @@
 <div class="overflow-x-hidden bg-gray-100">
-    <nav class="px-6 py-4 bg-white shadow">
-        <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
-            <div class="flex items-center justify-between">
-                <div>
-                    <a href="#" class="text-xl font-bold text-gray-800 md:text-2xl">Brand</a>
-                </div>
-                <div>
-                    <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
-                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
     <div class="px-6 py-8">
         <div class="container flex justify-between mx-auto">
             <div class="w-full lg:w-8/12">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Post</h1>
+                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                     <div>
                         <a href="/newPost/">New Post</a>
                     </div>
@@ -33,6 +14,7 @@
                         <div class="flex items-center justify-between"><span class="font-light text-gray-600">{{format_date post.date_created}} by: {{post.user.user_name}}</span>
                         </div>
                         <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
+                            <div>{{post.rhythm.name}}</div>
                             <div>{{{post.content}}}</div>
                         </div>
                         <div class="flex items-center justify-between mt-4">
@@ -75,13 +57,14 @@
                     <h1 class="mb-4 text-xl font-bold text-gray-700">Categories</h1>
                     <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                         <ul>
-                            {{#each rhythms as |rhythm| }}                        
+                            {{#each rhythmSet as |rhythm| }}                        
                             <li>
-                                <a href="#" class="mx-1 font-bold text-gray-700 hover:text-gray-600 hover:underline">
-                                    - {{rhythm.name}}
-                                </a>
+                                <label class="inline-flex items-center mt-3">
+                                    <input id='rhythmFilter' data-value='{{id}}' type="checkbox" class="form-checkbox h-5 w-5 text-gray-600"><span class="ml-2 text-gray-700">{{rhythm.name}}</span>
+                                </label>
                             </li>
                             {{/each}}
+                            <button id='updResults'>Update Results</button>
                         </ul>
                     </div>
                 </div>
@@ -114,3 +97,4 @@
     </footer>
 </div>
 <script src="/js/comment.js"></script>
+<script src="/js/filter.js"></script>

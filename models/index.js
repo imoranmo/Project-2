@@ -11,13 +11,13 @@ Instruments.belongsToMany(Users, {through:userInstruments, foreignKey:'instrumen
 Users.belongsToMany(Instruments, {through:userInstruments, foreignKey:'user_id', unique: false});
 
 // Each post has one Rhythm
-Rhythms.belongsTo(Posts, {
-    foreignKey: 'post_id',
+Posts.belongsTo(Rhythms, {
+    foreignKey: 'rhythm_id',
     constraints: false
   });
 
-Posts.hasOne(Rhythms,{
-    foreignKey: 'post_id',
+Rhythms.hasMany(Posts,{
+    foreignKey: 'rhythm_id',
     constraints: false
 });
 
