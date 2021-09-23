@@ -30,8 +30,8 @@ router.post('/newPost', async (req, res) => {
  
   try {
       const user_id = req.session.user_id;
-      const {title, content, date_created, rhythm_id} = req.body;
-      const newBody = {title, content, date_created, user_id, rhythm_id}
+      const {title, content, date_created, rhythm_id, url} = req.body;
+      const newBody = {title, content, date_created, user_id, rhythm_id, url}
       
       console.log(newBody);
 
@@ -47,8 +47,8 @@ router.put('/updatePost/:id', async (req, res) => {
  
   try {
       const user_id = req.session.user_id;
-      const {title, content, date_updated, rhythm_id} = req.body;
-      const updateBody = {title, content, date_updated, user_id, rhythm_id}
+      const {title, content, date_updated, rhythm_id, url} = req.body;
+      const updateBody = {title, content, date_updated, user_id, rhythm_id, url}
       
 
       await Posts.update(updateBody, { where: { id: req.params.id } });
