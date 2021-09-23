@@ -8,7 +8,9 @@ const newPostFormHandler = async (event) => {
     // Content comes in as a styles paragraph element
     const content = CKEDITOR.instances.content.getData();
     const date_created = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const newPost = {title, rhythm_id, content, date_created} 
+    const url = document.querySelector("#url").value
+    const newPost = {title, rhythm_id, content, date_created, url} 
+  
 
       if (title && rhythm_id && content) {
         // Send the e-mail and password to the server
