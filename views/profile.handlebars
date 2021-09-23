@@ -8,24 +8,26 @@
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
                 <div class="bg-white p-3">
-                    <h1 class="text-2xl text-gray-700 font-bold underline">PROFILE</h1>
+                    <h1 class="text-2xl text-gray-700 font-bold">Profile</h1>
                 </div>
                 
                 <div class="bg-white p-3 border-t-4 border-yellow-500 rounded-lg shadow-lg">
                     <div class="image overflow-hidden">
+                        <a href="#" title="Click to change profile picture">
                         <img class="h-auto w-full mx-auto rounded-full"
                             src="https://uwosh.edu/deanofstudents/wp-content/uploads/sites/156/2019/02/profile-default.jpg"
-                            alt="">
+                            alt="profilepic">
+                        </a>
                     </div>
                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{user.first_name}} {{user.last_name}}</h1>
                     <h3 class="text-blue-600 font-lg text-semibold leading-6 mb-2">Username: <span class="text-black">{{user.user_name}}</span></h3>
-                    <p class="text-lg text-grey-500 leading-6 font-bold">BIO: </p><span class="font-small text-base">{{user.bio}}.</span>
+                    <p class="text-lg text-grey-500 leading-6 font-semibold">About me: <a href="#" class="text-sm text-blue-500 underline">edit</a> </p><span class="font-small text-base">{{user.bio}}.</span>
                     
                 </div>
                 <div class="my-4 "></div>
                 <!-- Instruments Section -->
-                <div class="flex items-center space-x-3 font-bold text-gray-700 text-2xl leading-8 mb-4 underline">
-                        <span>INSTRUMENTS</span>
+                <div class="flex items-center space-x-3 font-bold text-gray-700 text-2xl leading-8 mb-4">
+                        <span>Instruments</span>
                     </div>
                 <div class="bg-white p-1 rounded-lg shadow-lg">
                     <div class="flex items-center space-x-3 font-semibold text-gray-900 text-2xl leading-8 mb-4 underline">
@@ -40,12 +42,12 @@
             </div>
             <!-- Right Side -->
           
-            <div class="w-full md:w-9/12 mx-2 my-16 h-64 shadow-lg">
+            <div class="w-full md:w-9/12 mx-2 my-16 h-64 shadow-lg mb-2">
 
                 <!-- Previous Posts Section -->
-                <div class="bg-white p-3 shadow-lg rounded-lg">
+                <div class="bg-white p-3 shadow-lg rounded-lg ">
                     <div class="flex items-center space-x-2 text-gray-900 leading-8">
-                        <span class="tracking-wide text-xl font-semibold underline">PREVIOUS POSTS</span>
+                        <span class="tracking-wide text-xl font-semibold">Previous Posts</span>
                     </div>
                     <div class="text-gray-700">
                        
@@ -61,7 +63,7 @@
                         <div class="flex items-center justify-between"><span class="font-light text-gray-600">{{format_date post.date_created}} by: {{post.user.user_name}}</span>
                         </div>
                         <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
-                            <div>{{post.rhythm.name}}</div>
+                           <div class="text-blue-700">#{{post.rhythm.name}}</div>
                             <div>{{{post.content}}}</div>
                         </div>
                         <div class="flex items-center justify-between mt-4">
