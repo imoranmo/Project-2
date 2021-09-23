@@ -11,4 +11,7 @@ module.exports = {
       new Date(date).getFullYear()
     }`;
   },
+  ifequals: (arg1, arg2, options) => {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+}
 };
