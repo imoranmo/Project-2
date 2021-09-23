@@ -4,7 +4,7 @@ const updatePostFormHandler = async (event) => {
     // Stop the browser from submitting the form so we can do so with JavaScript
     event.preventDefault();
   
-    console.log("MADE IT")
+    
     // Gather the data from the form elements on the page
     const title = document.querySelector('#title').value.trim();
     const rhythm_id = parseInt(document.querySelector('#rhythm').value);
@@ -23,7 +23,8 @@ const updatePostFormHandler = async (event) => {
           body: JSON.stringify(updatePost),
           headers: { 'Content-Type': 'application/json' },
         });
-  
+        
+        console.log("MADE IT")
         if (response.ok) {
           document.location.replace('/');
         } else {
@@ -34,5 +35,5 @@ const updatePostFormHandler = async (event) => {
         }
   };
   
-      updateForm.addEventListener('submit', updatePostFormHandler);
+updateForm.addEventListener('submit', updatePostFormHandler);
   

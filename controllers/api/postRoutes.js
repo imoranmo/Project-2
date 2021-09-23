@@ -43,7 +43,7 @@ router.post('/newPost', async (req, res) => {
     }
 });
 
-router.post('/updatePost/:id', async (req, res) => {
+router.put('/updatePost/:id', async (req, res) => {
  
   try {
       const user_id = req.session.user_id;
