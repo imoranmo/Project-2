@@ -1,6 +1,6 @@
-const commentToggleBtn = document.querySelector('#toggle-comments')
-const inputComment = document.querySelector('#comment')
-const commentBlock = commentToggleBtn.nextElementSibling;
+const commentToggleBtn = document.querySelectorAll('#toggle-comments')
+const inputComment = document.querySelectorAll('#comment')
+
 
 // The custom helper 'format_date' takes in a timestamp
 const format_date = (date) => {
@@ -13,15 +13,25 @@ const commentToggleHandler = async (event) => {
       event.preventDefault();
       const post_id = event.target.value;
 
-      loadComments(post_id);
+      const commentBlock = event.target.nextElementSibling; 
+      
+      commentBlock.innerHTML = '';
+      const commentElArr = await loadComments(post_id);
+
+      for (i=0; i<commentElArr.length; i++) {
+      commentBlock.append(commentElArr[i]);
+      }
+
+      
+      const toggleBtn = event.target
 
 
       
       commentBlock.classList.toggle("hidden");
       if (commentBlock.classList.contains("hidden")) {
-        commentToggleBtn.innerHTML = "Show Comments"
+        toggleBtn.innerHTML = "Show Comments"
       } else {
-        commentToggleBtn.innerHTML = "Hide Comments"
+        toggleBtn.innerHTML = "Hide Comments"
       }
   
     };
@@ -37,11 +47,12 @@ const commentToggleHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
           })
 
-        const commentArr = await response.json()
-          console.log(commentArr);
         
+          
 
-          commentBlock.innerHTML = '';
+        const commentArr = await response.json()
+        
+          const commentElArr = [];
 
             for (i=0; i < commentArr.length; i++){
 
@@ -60,8 +71,9 @@ const commentToggleHandler = async (event) => {
               commentP.className = 'font-semibold'
               commentP.innerText = content
               commentEl.append(commentUser, commentP);
-              commentBlock.append(commentEl);
+              commentElArr.push(commentEl);
             }
+            return commentElArr
           } catch (err) {
             console.log(err)
           }
@@ -69,10 +81,11 @@ const commentToggleHandler = async (event) => {
 
     const postComment = async (event) => {
           
-      const post_id = commentToggleBtn.value;
+      const post_id = event.target.getAttribute('data-value');
       const url = '/api/posts/addComment/' + post_id
       const date_created = new Date().toISOString().slice(0, 19).replace('T', ' ');
-      const content = event.target.value
+      const content = event.target.value     
+      const commentBlock = event.target.parentNode.previousElementSibling.children[1];
 
       const newComment = {content, date_created};
 
@@ -85,19 +98,28 @@ const commentToggleHandler = async (event) => {
 
       if (response.ok) {
         event.target.value = ""
-        loadComments(post_id)
+
+        commentBlock.innerHTML = '';
+        const commentElArr = await loadComments(post_id);
+        for (i=0; i<commentElArr.length; i++) {
+        commentBlock.append(commentElArr[i]);
+        }
       } else {
         alert('Failed to post comment');
       }
     }
   }
 
-    commentToggleBtn.addEventListener('click', commentToggleHandler);
+  commentToggleBtn.forEach(item => {
+      item.addEventListener('click', commentToggleHandler);
+      });
 
-    inputComment.addEventListener("keyup", function(event) {
-      if (event.key === "Enter") {
-          postComment(event)
-      }
+    inputComment.forEach(item => {
+      item.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            postComment(event)
+        }
+      });
   });
 
 
