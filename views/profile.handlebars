@@ -55,7 +55,9 @@
                      <div class="mt-6">
                     {{#each posts as |post| }}   
                     <div class="max-w-4xl px-10 py-6 mx-auto bg-white mr-48 border-b-2">
-                        <button id="editPost" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white mb-2">Edit Post</button>
+                        <a href="/profile/updatePost/{{post.id}}">
+                            <button id="editPost" class="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white mb-2">Edit Post</button>
+                        </a>
                         <div class="flex items-center justify-between"><span class="font-light text-gray-600">{{format_date post.date_created}} by: {{post.user.user_name}}</span>
                         </div>
                         <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>

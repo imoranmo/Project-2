@@ -8,20 +8,22 @@ might be able to make this same view --}}
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
-                <h1 class="np-title mb-8 text-3xl font-bold">NEW POST</h1>
+                <h1 class="np-title mb-8 text-3xl font-bold">UPDATE POST</h1>
 <!--START New Post Fields START-->
-                <form id='newPost-form'>
+                <form id='updatePost-form' data-value='{{post.id}}'>
                     <!--Title-->
                     <div class="mb-4">
                             <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
-                            <input type="text" class="rounded-lg border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
+                            <input type="text" class="rounded-lg border-2 border-gray-300 p-2 w-full" name="title" id="title" value="{{post.title}}" required>
                         </div>
                         </br>
                         <div>
                             <label class="text-xl text-gray-600">Rhythm</label></br>
-                            <select id='rhythm' class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <select value='{{post.rhythm_id}}'  id='rhythm' class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 {{#each rhythms as |rhythm| }} 
-                                    <option value="{{rhythm.id}}">{{rhythm.name}}</option>
+                                    <option  value="{{rhythm.id}}" {{#ifequals rhythm.id ../post.rhythm_id }}
+                                            selected
+                                        {{/ifequals}} >{{rhythm.name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -31,7 +33,7 @@ might be able to make this same view --}}
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
                             <textarea id='content' name="content" class="rounded-lg border-2 border-gray-500">
-                                
+                                {{post.content}}
                             </textarea>
                         </div>
                     <!--URL-->
@@ -50,7 +52,7 @@ might be able to make this same view --}}
         </div>
     </div>
 <!--Text Editor Add-On-->
-    <script src="/js/newPost.js"></script>
+    <script src="/js/updatePost.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script>
