@@ -1,11 +1,9 @@
 const Users = require('./Users');
 const Instruments = require('./Instruments');
-const userInstruments = require('./userInstruments');
+const userInstruments = require('./UserInstruments');
 const Rhythms = require('./Rhythms');
 const Comments = require('./Comments');
 const Posts = require('./Posts');
-
-
 
 //Each user can have many instruments and instruments can go to many users
 Instruments.belongsToMany(Users, {through:userInstruments, foreignKey:'instrument_id', unique: false});
