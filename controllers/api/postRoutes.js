@@ -50,9 +50,26 @@ router.put('/updatePost/:id', async (req, res) => {
       const {title, content, date_updated, rhythm_id} = req.body;
       const updateBody = {title, content, date_updated, user_id, rhythm_id}
       
-      console.log(updateBody);
 
       await Posts.update(updateBody, { where: { id: req.params.id } });
+
+      res.status(200).end();
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
+
+router.post('/addComment/:id', async (req, res) => {
+ 
+  try {
+      const user_id = req.session.user_id;
+      const post_id = req.params.id;
+      const {content, date_created} = req.body;
+      const updateBody = {content, date_created, user_id, post_id}
+      
+      console.log(updateBody);
+
+      await Comments.create(updateBody);
 
       res.status(200).end();
     } catch (err) {
