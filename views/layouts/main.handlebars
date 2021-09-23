@@ -5,34 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Registry</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/tailwind.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <nav class="px-6 py-4 bg-white shadow">
-        <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
-            <div class="flex items-center justify-between">
-                <div class="flex-col hidden md:flex md:flex-row md:-mx-4">
+    
                       <!-- Only display the logout button if the user is logged in -->
-                    
-                      <a href="/" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Feed</a>
                     {{#if logged_in}}
-                      <a href="/profile" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Profile</a>
-                      <a id="logout" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Logout</a>
+                    <nav class="px-6 py-4 bg-yellow-500 shadow-lg rounded-sm">
+                      <div class="flex flex-row-reverse ...">
+                        <div><a id="logout" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Logout</a></div>
+                        <div><a href="/profile" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Profile</a></div>
+                        <div><a href="/" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Feed</a></div>
+                      </div>
+                    </nav>
                     {{else}}
-                      <a href='/session/login' class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Login</a>
-                      <a href='/session/signup' class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Sign-Up</a>
                     {{/if}}
-                </div>
-            </div>
-
-        </div>
-    </nav>   
-  <main class="container container-fluid mt-5">
+ 
+  <main class="container">
     {{{ body }}}
   </main>
  
