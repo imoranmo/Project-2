@@ -2,8 +2,9 @@ const Users = require('./Users');
 const Instruments = require('./Instruments');
 const userInstruments = require('./userInstruments');
 const Rhythms = require('./Rhythms');
-const Posts = require('./Posts');
 const Comments = require('./Comments');
+const Posts = require('./Posts');
+
 
 
 //Each user can have many instruments and instruments can go to many users
