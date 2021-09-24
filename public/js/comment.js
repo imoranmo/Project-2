@@ -65,10 +65,10 @@ const commentToggleHandler = async (event) => {
               const newDate = format_date(date_created);
               
 
-              commentEl.className= 'max-w-4xl px-10 py-4 mx-auto mb-2 bg-gray-200 rounded-lg shadow-md';
+              commentEl.className= 'float-left max-w-4xl px-10 py-4 mx-auto mb-2 bg-gray-200 rounded-lg shadow-md';
               commentUser.innerText = `${user_name} on ${newDate}`
               commentUser.className = 'italic text-grey-200 text-sm'
-              commentP.className = 'font-semibold'
+              commentP.className = ' float-left font-semibold'
               commentP.innerText = content
               commentEl.append(commentUser, commentP);
               commentElArr.push(commentEl);
