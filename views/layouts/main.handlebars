@@ -17,10 +17,11 @@
                       <!-- Only display the logout button if the user is logged in -->
                     {{#if logged_in}}
                     <nav class="px-6 py-4 bg-yellow-500 shadow-lg rounded-sm">
+                      <span class="logo flex float-left">A-LOTTA-RHYTHMS</span>
                       <div class="flex flex-row-reverse ...">
-                        <div><a id="logout" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Logout</a></div>
-                        <div><a href="/profile" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Profile</a></div>
-                        <div><a href="/" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0">Feed</a></div>
+                        <div><a id="logout" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">Logout</a></div>
+                        <div><a href="/profile" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">Profile</a></div>
+                        <div><a href="/" class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">Feed</a></div>
                       </div>
                     </nav>
                     {{else}}
