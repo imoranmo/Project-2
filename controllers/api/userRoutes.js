@@ -51,8 +51,10 @@ router.post('/logout', (req, res) => {
 router.post('/signup', async (req, res) => {
 
   try {
+
+   
    const newUser =  await Users.create(req.body);
-    console.log(newUser.dataValues.id);
+    console.log(req.body)
     if (newUser.length != 0) {
       req.session.save(() => {
         req.session.user_id = newUser.dataValues.id;
@@ -61,9 +63,9 @@ router.post('/signup', async (req, res) => {
       })
       
     }
-    // console.log(req.session)
-    ;
+    console.log(req.session)
     } catch (err) {
+      console.log(err)
       res.status(404).json(err);
     }
 
