@@ -354,9 +354,14 @@ fieldset {
   padding: 0;
 }
 
-ol,
+ol{
+  list-style: upper-roman;
+  margin: 0;
+  padding: 0;
+}
+
 ul {
-  list-style: none;
+  list-style: square;
   margin: 0;
   padding: 0;
 }
