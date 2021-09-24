@@ -21,8 +21,10 @@
                     </div>
                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{user.first_name}} {{user.last_name}}</h1>
                     <h3 class="text-blue-600 font-lg text-semibold leading-6 mb-2">Username: <span class="text-black">{{user.user_name}}</span></h3>
+
                     <p class="text-lg text-grey-500 leading-6 font-semibold">About me: <a href="#" class="text-sm text-blue-500 underline">edit</a> </p><span class="font-small text-base">{{user.bio}}.</span>
                     
+
                 </div>
                 <div class="my-4 "></div>
                 <!-- Instruments Section -->
@@ -65,6 +67,7 @@
                         <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
                            <div class="text-blue-700">#{{post.rhythm.name}}</div>
                             <div>{{{post.content}}}</div>
+                            <div>{{{post.url}}}</div>
                         </div>
                         <div class="flex items-center justify-between mt-4">
                             {{!-- Comments.js uses "nextSiblingElement to get to comments from the toggle-comment btn" --}}
@@ -72,6 +75,9 @@
                             <div class="hidden" id="comments">
                                 <h1>Comments:</h1>
                             </div>
+                        </div>
+                        <div class="mb-4 rounded-full">
+                            <input type="text" name="" id="comment" data-value="{{post.id}}" placeholder="Add a comment!" class="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autofocus autocomplete required>
                         </div>
                     </div>
                     {{/each}}

@@ -1,25 +1,30 @@
-const newPostFormHandler = async (event) => {
+const updateBio = document.querySelector('#updateBio')
+
+const updateBioHandler = async (event) => {
     // Stop the browser from submitting the form so we can do so with JavaScript
     event.preventDefault();
   
+    
     // Gather the data from the form elements on the page
-    const title = document.querySelector('#title').value.trim();
     const rhythm_id = parseInt(document.querySelector('#rhythm').value);
     // Content comes in as a styles paragraph element
     const content = CKEDITOR.instances.content.getData();
-    const date_created = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const date_updated = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const url = document.querySelector("#url").value
-    const newPost = {title, rhythm_id, content, date_created, url} 
-  
+    const updatePost = {title, rhythm_id, content, date_updated, url} 
+    const post_id = updateForm.getAttribute('data-value')
+
+      console.log(updatePost);
 
       if (title && rhythm_id && content) {
         // Send the e-mail and password to the server
-        const response = await fetch('/api/posts/newPost', {
-          method: 'POST',
-          body: JSON.stringify(newPost),
+        const response = await fetch(`/api/posts/updatePost/${post_id}`, {
+          method: 'PUT',
+          body: JSON.stringify(updatePost),
           headers: { 'Content-Type': 'application/json' },
         });
-  
+        
+        console.log("MADE IT")
         if (response.ok) {
           document.location.replace('/');
         } else {
@@ -30,7 +35,5 @@ const newPostFormHandler = async (event) => {
         }
   };
   
-  document
-    .querySelector('#newPost-form')
-    .addEventListener('submit', newPostFormHandler);
+updateForm.addEventListener('submit', updatePostFormHandler);
   

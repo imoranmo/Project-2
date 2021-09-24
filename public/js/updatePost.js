@@ -11,7 +11,8 @@ const updatePostFormHandler = async (event) => {
     // Content comes in as a styles paragraph element
     const content = CKEDITOR.instances.content.getData();
     const date_updated = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const updatePost = {title, rhythm_id, content, date_updated} 
+    const url = document.querySelector("#url").value
+    const updatePost = {title, rhythm_id, content, date_updated, url} 
     const post_id = updateForm.getAttribute('data-value')
 
       console.log(updatePost);
