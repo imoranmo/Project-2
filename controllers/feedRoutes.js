@@ -7,21 +7,7 @@ const Op = Sequelize.Op;
 
 const linkPreviewGenerator = require("link-preview-generator");
 
-const previewData = await linkPreviewGenerator(
-  "https://www.youtube.com/watch?v=8mqqY2Ji7_g"
-);
-console.log(previewData);
-/*
-{
-  title: 'Kiteboarding: Stylish Backroll in 4 Sessions - Ride with Blake: Vlog 20',
-  description: 'The backroll is a staple in your kiteboarding trick ' +
-    'bag. With a few small adjustments, you can really ' +
-    'improve your style and make this basic your own. ' +
-    'Sessio...',
-  domain: 'youtube.com',
-  img: 'https://i.ytimg.com/vi/8mqqY2Ji7_g/hqdefault.jpg'
-}
-*/
+
 
 
 router.get('/', withAuth, async (req, res) => {
@@ -54,7 +40,23 @@ router.get('/', withAuth, async (req, res) => {
       const rhythmData = await Rhythms.findAll();
       const rhythmSet = rhythmData.map((rhy) => rhy.get({ plain: true }));
       
-      const posts = postData.map((post) => post.get({ plain: true }));
+      const posts = postData.map((post) => {
+             post.get({ plain: true })
+             const previewData = await linkPreviewGenerator(post.url);
+            post.url = previewData;
+            return post
+            });
+/*
+{
+  title: 'Kiteboarding: Stylish Backroll in 4 Sessions - Ride with Blake: Vlog 20',
+  description: 'The backroll is a staple in your kiteboarding trick ' +
+    'bag. With a few small adjustments, you can really ' +
+    'improve your style and make this basic your own. ' +
+    'Sessio...',
+  domain: 'youtube.com',
+  img: 'https://i.ytimg.com/vi/8mqqY2Ji7_g/hqdefault.jpg'
+}
+*/
       console.log(posts);
       
 
