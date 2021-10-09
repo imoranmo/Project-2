@@ -40,7 +40,7 @@ router.get('/', withAuth, async (req, res) => {
       const rhythmData = await Rhythms.findAll();
       const rhythmSet = rhythmData.map((rhy) => rhy.get({ plain: true }));
       
-      const posts = postData.map((post) => {
+      const posts = postData.map(async (post) => {
              post.get({ plain: true })
              const previewData = await linkPreviewGenerator(post.url);
             post.url = previewData;
