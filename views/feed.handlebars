@@ -16,7 +16,10 @@
                         <div class="mt-2"><a href="#" class="text-2xl font-bold text-gray-700 hover:underline">{{post.title}}</a>
                             <div class="text-blue-700">#{{post.rhythm.name}}</div>
                             <div>{{{post.content}}}</div>
-                            <div><a class="text-blue-700 underline" target="_blank" href="{{{post.url}}}">{{{post.url}}}</a></div>
+                            <div><a class="text-blue-700 underline" target="_blank" href="{{{post.url}}}">{{{post.url}}}</a>
+                            <meta property="og:title" content="{{post.url.title}}" />
+                            <meta property="og:url" content="{{post.url}}" />
+                            <meta property="og:image" content="{{post.url.img}}" /></div>
                         </div>
                         <div class="flex items-center justify-between mt-4">
                             {{!-- Comments.js uses "nextSiblingElement to get to comments from the toggle-comment btn" --}}

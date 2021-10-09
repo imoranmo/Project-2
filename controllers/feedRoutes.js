@@ -5,6 +5,11 @@ const withAuth = require('../utils/auth');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+const linkPreviewGenerator = require("link-preview-generator");
+
+
+
+
 router.get('/', withAuth, async (req, res) => {
     try {
 
@@ -35,7 +40,23 @@ router.get('/', withAuth, async (req, res) => {
       const rhythmData = await Rhythms.findAll();
       const rhythmSet = rhythmData.map((rhy) => rhy.get({ plain: true }));
       
-      const posts = postData.map((post) => post.get({ plain: true }));
+      const posts = postData.map(async (post) => {
+             post.get({ plain: true })
+             const previewData = await linkPreviewGenerator(post.url);
+            post.url = previewData;
+            return post
+            });
+/*
+{
+  title: 'Kiteboarding: Stylish Backroll in 4 Sessions - Ride with Blake: Vlog 20',
+  description: 'The backroll is a staple in your kiteboarding trick ' +
+    'bag. With a few small adjustments, you can really ' +
+    'improve your style and make this basic your own. ' +
+    'Sessio...',
+  domain: 'youtube.com',
+  img: 'https://i.ytimg.com/vi/8mqqY2Ji7_g/hqdefault.jpg'
+}
+*/
       console.log(posts);
       
 
